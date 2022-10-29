@@ -29,21 +29,20 @@ p {
   padding: 0.5vw;
 }
 
-img {
-  padding-right: 1rem;
+.topnav {
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.topnav {
-  overflow: hidden;
-  margin: 3.5%;
-}
 .header-logo {
-    float: left;
+  display: flex;
+  align-items: center;
 }
-.main-navbar {
-    float: right;
-}
+
 .topnav a {
+  position: relative;
   float: left;
   display: block;
   color: #000000;
@@ -52,18 +51,37 @@ img {
   margin: 5px;
   text-decoration: none;
   font-size: 20px;
-  font-family: Roboto, sans-serif;
+  font-family: "Roboto", sans-serif;
+}
+
+.topnav a span:after {
+  background: none repeat scroll 0 0 transparent;
+  bottom: 10px;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 50%;
+  position: absolute;
+  background: #fff;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
 }
 
 .topnav a:hover {
   background-color: var(--red-1);
-  color: #ffffff;
+  color: #fff;
   border-radius: 15px;
+}
+
+.topnav a span:hover:after {
+  width: 90%; 
+  margin: 0 auto;
+  left: 5%; 
 }
 
 .topnav a.active {
   background-color: var(--red-1);
-  color: #ffffff;
+  color: #fff;
   border-radius: 15px;
 }
 
@@ -71,15 +89,17 @@ img {
   display: none;
 }
 
-@media screen and (max-width: 768px) {
+
+@media screen and (max-width: 1150px) {
   .topnav a {display: none;}
   .topnav a.icon {
-    float: right;
     display: block;
+    color: var(--red-1);
+    font-size: 1.5rem;
   }
-}
-
-@media screen and (max-width: 768px) {
+  .topnav a.icon:hover {
+    color: #fff;
+  }
   .topnav.responsive {position: relative;}
   .topnav.responsive .icon {
     position: absolute;
@@ -92,8 +112,6 @@ img {
     text-align: left;
   }
 }
-
-
 
  @media screen and (max-width: 540px) {
   .topnav a {display: none;}
