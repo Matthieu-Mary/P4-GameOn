@@ -12,6 +12,8 @@ form.addEventListener("submit", (e) => {
     let allLocations = document.querySelectorAll(".checkbox-input[type='radio']");
     let beWarned = document.getElementById("checkbox2")
 
+    console.log("submitted")
+
     firstName = firstName.value;
     localStorage.setItem("firstName", firstName);
 
@@ -48,7 +50,22 @@ form.addEventListener("submit", (e) => {
     }
     warned();
 
-    window.location.href= "./pages/validatedForm.html"
+    form.style.display = "none";
+    
+    // Call the function displaying message after submitting
+    function validatedFormContent() {
+        const validatedForm = document.querySelector(".validated-form-container")
+        const fullName = document.querySelector(".full-name");
+        const emailMsg = document.querySelector(".email");
+        const locationMsg = document.querySelector(".location");
+    
+        validatedForm.style.display = "block";
+        fullName.textContent = `Bonjour ${localStorage.getItem('firstName')}  ${localStorage.getItem('lastName')}`;
+        emailMsg.textContent = `${localStorage.getItem('email')},`;
+        locationMsg.textContent = `${localStorage.getItem('location')}`;
+    }
+    validatedFormContent()
+    
 })
 
 
