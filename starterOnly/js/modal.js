@@ -4,6 +4,7 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const modalCloseBtn = document.querySelector(".close");
+const validatedFormCloseBtn = document.querySelector(".close-btn");
 
 // edit nav
 function editNav() {
@@ -18,6 +19,7 @@ function editNav() {
 // launch and close modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 modalCloseBtn.addEventListener("click", removeModal);
+validatedFormCloseBtn.addEventListener("click", removeModal);
 
 // launch modal form
 function launchModal() {
