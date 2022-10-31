@@ -10,6 +10,9 @@
   margin: 0;
   padding: 0;
 }
+ul {
+  list-style-type: none;
+}
 
 /* Landing Page */
 
@@ -30,11 +33,21 @@ p {
   padding: 0.5vw;
 }
 
+/* .main-navbar {
+  display: flex;
+  flex-direction: column;
+} */
+
 .topnav {
   padding: 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.topnav ul {
+  display: flex;
+  flex-direction: row;
 }
 
 .header-logo {
@@ -48,7 +61,7 @@ p {
   display: block;
   color: #000000;
   text-align: center;
-  padding: 12px 12px;
+  padding: 12px;
   margin: 5px;
   text-decoration: none;
   font-size: 20px;
@@ -98,6 +111,10 @@ p {
   .topnav a {
     display: none;
   }
+  .main-navbar {
+    display: flex;
+    flex-direction: column; 
+  }
   .topnav a.icon {
     display: block;
     color: var(--red-1);
@@ -108,11 +125,25 @@ p {
   }
   .topnav.responsive {
     position: relative;
+    max-height: auto;
+    overflow: visible;
   }
-  .topnav.responsive .icon {
+  .topnav ul li a {
+    background-color: rgba(0,0,0,0.8);
+    color: white;
+    border-radius: 1rem;
+    padding: 8px 10px;
+  }
+  .topnav a span:after {
+    display: none;
+  }
+  .topnav.responsive ul{
+    display: flex;
+    flex-direction: column;
     position: absolute;
-    right: 0;
-    top: 0;
+    z-index: 10;
+    right: 4.5rem;
+    top: 2.5rem;
   }
   .topnav.responsive a {
     float: none;
@@ -187,7 +218,7 @@ main {
 .bground {
   display: none;
   position: fixed;
-  z-index: 1;
+  z-index: 11;
   left: 0;
   top: 0;
   height: 100%;

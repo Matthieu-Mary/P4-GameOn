@@ -12,8 +12,6 @@ form.addEventListener("submit", (e) => {
     let allLocations = document.querySelectorAll(".checkbox-input[type='radio']");
     let beWarned = document.getElementById("checkbox2")
 
-    console.log("submitted")
-
     firstName = firstName.value;
     localStorage.setItem("firstName", firstName);
 
@@ -63,6 +61,7 @@ form.addEventListener("submit", (e) => {
         fullName.textContent = `Bonjour ${localStorage.getItem('firstName')}  ${localStorage.getItem('lastName')}`;
         emailMsg.textContent = `${localStorage.getItem('email')},`;
         locationMsg.textContent = `${localStorage.getItem('location')}`;
+
     }
     validatedFormContent()
     
