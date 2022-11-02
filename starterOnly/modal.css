@@ -33,11 +33,6 @@ p {
   padding: 0.5vw;
 }
 
-/* .main-navbar {
-  display: flex;
-  flex-direction: column;
-} */
-
 .topnav {
   padding: 2rem;
   display: flex;
@@ -286,14 +281,14 @@ input {
   opacity: 1;
 }
 .formData[data-error-visible="true"] .text-control {
-  border: 2px solid #e54858;
+  border: 20px solid #e54858;
 }
-/* 
+
 input[data-error]::after {
     content: attr(data-error);
     font-size: 0.4em;
     color: red;
-} */
+}
 .checkbox-label,
 .checkbox2-label {
   position: relative;
@@ -575,7 +570,7 @@ footer {
   line-height: 1.5rem;
 }
 
-.validated-content button {
+.validated-form-container button {
   cursor: pointer;
   font-size: 14px;
   background: var(--red-1);
