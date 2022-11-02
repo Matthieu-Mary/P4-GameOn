@@ -48,20 +48,28 @@ form.addEventListener("submit", (e) => {
     }
     warned();
 
+    // Hide form, replaced by validation message content
     form.style.display = "none";
     
     // Call the function displaying message after submitting
     function validatedFormContent() {
         const validatedForm = document.querySelector(".validated-form-container")
         const fullName = document.querySelector(".full-name");
-        const emailMsg = document.querySelector(".email");
         const locationMsg = document.querySelector(".location");
-    
+        const emailMsg = document.querySelector(".email-msg");
+
         validatedForm.style.display = "block";
+
         fullName.textContent = `Bonjour ${localStorage.getItem('firstName')}  ${localStorage.getItem('lastName')}`;
-        emailMsg.textContent = `${localStorage.getItem('email')},`;
         locationMsg.textContent = `${localStorage.getItem('location')}`;
 
+        // Have to parse because value in localStorage are strings
+        JSON.parse(localStorage.getItem("beWarned")) === true 
+        ?
+        emailMsg.textContent = `Vous avez également accepté de recevoir des informations concernant les prochains tournois par mail, à l'adresse : ${localStorage.getItem('email')}` 
+        : 
+        ""
+        
     }
     validatedFormContent()
     
