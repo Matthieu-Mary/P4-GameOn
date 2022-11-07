@@ -32,12 +32,12 @@ form.addEventListener("submit", (e) => {
         if (firstName.value === "") {
             firstNameError.textContent = "Veuillez renseigner ce champ.";
             resultFirstName = false;
-        } else if (firstName.length < 2) {
+        } else if (firstName.value.length < 2) {
             firstNameError.textContent = "Veuillez entrer 2 caractères ou plus pour le champ du prénom.";
             resultFirstName = false;
         } else {
             firstName.textContent = "";
-            firstNameValue = firstName.value;
+            const firstNameValue = firstName.value;
             localStorage.setItem("firstName", firstNameValue);
             resultFirstName = true;
         }   
@@ -54,12 +54,12 @@ form.addEventListener("submit", (e) => {
         if (lastName.value === "") {
             lastNameError.textContent = "Veuillez renseigner ce champ.";
             resultLastName = false;
-        } else if (lastName.length < 2) {
+        } else if (lastName.value.length < 2) {
             lastNameError.textContent = "Veuillez entrer 2 caractères ou plus pour le champ du prénom."
             resultLastName = false;
         } else {
             lastName.textContent = "";
-            lastNameValue = lastName.value;
+            const lastNameValue = lastName.value;
             localStorage.setItem("lastName", lastNameValue);
             resultLastName = true;
         }   
@@ -80,7 +80,7 @@ form.addEventListener("submit", (e) => {
             resultEmail = false;
         } else {
             emailError.textContent = "";
-            emailValue = email.value;
+            const emailValue = email.value;
             localStorage.setItem("email", emailValue);
             resultEmail = true;
         }  
@@ -98,7 +98,7 @@ form.addEventListener("submit", (e) => {
             resultBirthdate = false;
         } else {
             birthError.textContent = "";
-            birthDateValue= birthDate.value;
+            const birthDateValue= birthDate.value;
             localStorage.setItem("birthDate", birthDateValue);
             resultBirthdate = true;
         }
@@ -115,24 +115,29 @@ form.addEventListener("submit", (e) => {
     
     // locations
     const getLocation = () => {
-        let resultLocation;
+
+        // set into localstorage
         allLocations.forEach( location => {
             let locationValue;
             if ( location.checked ) {
                 locationValue = location.value;
-                if (result !== "") {
-                    localStorage.setItem("location", locationValue);
-                    resultLocation = true;
-                } else {
+                localStorage.setItem("location", locationValue);
+                locationError.textContent = "";
+            } else {
                 locationError.textContent = "Veuillez choisir une localisation.";
-                resultLocation = false;
-                }
             } 
         })
+
+        // convert node list into array
+        const allLocationsArr = Array.prototype.slice.call(allLocations)
+        
+        // return true if a location is selected and false if not
+        const resultLocation = allLocationsArr.some(location => location.checked);
+
         return resultLocation;
     }
     const locationResult = getLocation();
-    console.log(locationResult)
+
 
     //  conditions
     const getConditions = () => {
@@ -186,7 +191,7 @@ form.addEventListener("submit", (e) => {
         
     }
     
-    if (firstNameResult && lastNameResult && emailResult && birthResult && conditionsResult) {
+    if (firstNameResult && lastNameResult && emailResult && birthResult && locationResult && conditionsResult) {
         validatedFormContent()
     }
 
