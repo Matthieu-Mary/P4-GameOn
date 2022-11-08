@@ -26,7 +26,7 @@ form.addEventListener("submit", (e) => {
 
     var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
-    // first name
+    // FIRST NAME
     const getFirstName = () => {
         let resultFirstName;
         if (firstName.value === "") {
@@ -36,7 +36,7 @@ form.addEventListener("submit", (e) => {
             firstNameError.textContent = "Veuillez entrer 2 caractères ou plus pour le champ du prénom.";
             resultFirstName = false;
         } else {
-            firstName.textContent = "";
+            firstNameError.textContent = "";
             const firstNameValue = firstName.value;
             localStorage.setItem("firstName", firstNameValue);
             resultFirstName = true;
@@ -48,7 +48,7 @@ form.addEventListener("submit", (e) => {
     
 
 
-    // last name
+    // LAST NAME
     const getLastName = () => {
         let resultLastName;
         if (lastName.value === "") {
@@ -58,7 +58,7 @@ form.addEventListener("submit", (e) => {
             lastNameError.textContent = "Veuillez entrer 2 caractères ou plus pour le champ du prénom."
             resultLastName = false;
         } else {
-            lastName.textContent = "";
+            lastNameError.textContent = "";
             const lastNameValue = lastName.value;
             localStorage.setItem("lastName", lastNameValue);
             resultLastName = true;
@@ -69,7 +69,7 @@ form.addEventListener("submit", (e) => {
     const lastNameResult = getLastName();
  
 
-    // email
+    // EMAIL
     const getEmail = () => {
         let resultEmail;
         if (!email.value) {
@@ -90,7 +90,7 @@ form.addEventListener("submit", (e) => {
     const emailResult = getEmail();
 
 
-    // birthdate
+    // BIRTHDATE
     const getBirthdate = () => {
         let resultBirthdate;
         if (birthDate.value === "") {
@@ -108,12 +108,12 @@ form.addEventListener("submit", (e) => {
     const birthResult = getBirthdate();
     
 
-    // quantity (not required)
+    // QUANTITY (not required)
     quantity = quantity.value;
     localStorage.setItem("quantity", quantity);
     
     
-    // locations
+    // LOCATIONS
     const getLocation = () => {
 
         // set into localstorage
@@ -122,24 +122,26 @@ form.addEventListener("submit", (e) => {
             if ( location.checked ) {
                 locationValue = location.value;
                 localStorage.setItem("location", locationValue);
-                locationError.textContent = "";
             } else {
                 locationError.textContent = "Veuillez choisir une localisation.";
             } 
         })
-
+        
         // convert node list into array
         const allLocationsArr = Array.prototype.slice.call(allLocations)
         
         // return true if a location is selected and false if not
         const resultLocation = allLocationsArr.some(location => location.checked);
+        if(resultLocation) {
+            locationError.textContent = "";
+        }
 
         return resultLocation;
     }
     const locationResult = getLocation();
 
 
-    //  conditions
+    //  CONDITIONS
     const getConditions = () => {
         let resultConditions;
         if (!conditions.checked) {
@@ -172,23 +174,6 @@ form.addEventListener("submit", (e) => {
     function validatedFormContent() {
         // Hide form, replaced by validation message content
         form.style.display = "none";
-        const validatedForm = document.querySelector(".validated-form-container")
-        const fullName = document.querySelector(".full-name");
-        const locationMsg = document.querySelector(".location");
-        const emailMsg = document.querySelector(".email-msg");
-        
-        validatedForm.style.display = "block";
-        
-        fullName.textContent = `Bonjour ${localStorage.getItem('firstName')}  ${localStorage.getItem('lastName')}`;
-        locationMsg.textContent = `${localStorage.getItem('location')}`;
-        
-        // Have to parse because value in localStorage are strings
-        JSON.parse(localStorage.getItem("beWarned")) === true 
-        ?
-        emailMsg.textContent = `Vous avez également accepté de recevoir des informations concernant les prochains tournois par mail, à l'adresse : ${localStorage.getItem('email')}` 
-        : 
-        ""
-        
     }
     
     if (firstNameResult && lastNameResult && emailResult && birthResult && locationResult && conditionsResult) {
