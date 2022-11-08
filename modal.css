@@ -544,36 +544,25 @@ footer {
 /*----- CONTENT VALIDATE FORM -----*/
 
 .validated-form-container {
-  text-align: left;
   padding: 0;
-  display: none;
+  display: flex;
   justify-content: center;
   align-items: center;
   max-height: 800px;
-  height: 100vh;
+  height: 80vh;
   width: 100%;
   background-color: var(--dark-1);
   position: relative;
 }
 
-.validated-content {
-  width: 90%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-}
-
-.validated-content h2 {
-  padding: 10px;
-}
-
-.validated-content p {
-  font-size: 16px;
+.validated-form-container p {
+  text-align: center;
+  font-size: 36px;
+  font-weight: 400;
+  width: 350px;
   letter-spacing: 0.05rem;
-  line-height: 1.5rem;
+  line-height: 52px;
+  padding-bottom: 2.5rem;
 }
 
 .validated-form-container button {
