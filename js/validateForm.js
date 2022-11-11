@@ -103,8 +103,6 @@ form.addEventListener("submit", (e) => {
         return date16YearsAgoNumber;
     }
     const isOver16YoResult = isOver16Yo();
-    console.log(isOver16YoResult)
-
 
     const getBirthdate = () => {
         let resultBirthdate;
@@ -125,7 +123,6 @@ form.addEventListener("submit", (e) => {
     }
     getBirthdate();
     const birthResult = getBirthdate();
-    console.log(birthResult)
 
     
 
@@ -208,8 +205,6 @@ form.addEventListener("submit", (e) => {
         // Hide form, replaced by validation message content
         form.style.display = "none";
         validatedForm.style.display = "flex";
-        console.log(validatedForm)
-        
     }
     
     if (firstNameResult && lastNameResult && emailResult && birthResult && quantityResult && locationResult && conditionsResult) {
