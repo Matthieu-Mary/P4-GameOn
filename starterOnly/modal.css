@@ -443,7 +443,7 @@ input {
   font-size: 16px;
 }
 .hero-section {
-  height: 675px;
+  height: auto;
   border-radius: 10px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
