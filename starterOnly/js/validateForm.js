@@ -19,6 +19,7 @@ form.addEventListener("submit", (e) => {
     const lastNameError = document.querySelector(".lastName-error");
     const emailError = document.querySelector(".email-error");
     const birthError = document.querySelector(".birth-error");
+    const quantityError = document.querySelector(".quantity-error")
     const locationError = document.querySelector(".location-error");
     const conditionsError = document.querySelector(".conditions-error");
 
@@ -91,26 +92,57 @@ form.addEventListener("submit", (e) => {
 
 
     // BIRTHDATE
+    const isOver16Yo = () => {
+        const date16YearsAgo = new Date();
+        date16YearsAgo.setFullYear(date16YearsAgo.getFullYear() - 16);
+        const year = date16YearsAgo.getFullYear();
+        const month = date16YearsAgo.getMonth() + 1;
+        const day = date16YearsAgo.getDate();
+        
+        const date16YearsAgoNumber = [year, month, day].join("-");
+        return date16YearsAgoNumber;
+    }
+    const isOver16YoResult = isOver16Yo();
+    console.log(isOver16YoResult)
+
+
     const getBirthdate = () => {
         let resultBirthdate;
+        let birthDateValue;
         if (birthDate.value === "") {
             birthError.textContent = "Veuillez renseigner ce champ.";
             resultBirthdate = false;
+        } else if (birthDate.value > isOver16YoResult) {
+            birthError.textContent = "Vous devez avoir au moins 16 ans pour pouvoir vous inscrire";
+            resultBirthdate = false;
         } else {
             birthError.textContent = "";
-            const birthDateValue= birthDate.value;
+            birthDateValue= birthDate.value;
             localStorage.setItem("birthDate", birthDateValue);
             resultBirthdate = true;
         }
-        return resultBirthdate;
+        return birthDateValue;
     }
     getBirthdate();
     const birthResult = getBirthdate();
+    console.log(birthResult)
+
     
 
-    // QUANTITY (not required)
-    quantity = quantity.value;
-    localStorage.setItem("quantity", quantity);
+    // QUANTITY 
+    const getQuantity = () => {
+        let resultQuantity;
+        if (quantity.value === "") {
+            quantityError.textContent = "Veuillez renseigner ce champ."
+        } else {
+            quantityError.textContent = "";
+            resultQuantity = quantity.value;
+            localStorage.setItem("quantity", resultQuantity);
+        }
+        return resultQuantity;
+    }
+    getQuantity();
+    const quantityResult = getQuantity();
     
     
     // LOCATIONS
@@ -172,11 +204,15 @@ form.addEventListener("submit", (e) => {
     
     // Call the function displaying message after submitting
     function validatedFormContent() {
+        const validatedForm = document.querySelector(".validated-form-container");
         // Hide form, replaced by validation message content
         form.style.display = "none";
+        validatedForm.style.display = "flex";
+        console.log(validatedForm)
+        
     }
     
-    if (firstNameResult && lastNameResult && emailResult && birthResult && locationResult && conditionsResult) {
+    if (firstNameResult && lastNameResult && emailResult && birthResult && quantityResult && locationResult && conditionsResult) {
         validatedFormContent()
     }
 
