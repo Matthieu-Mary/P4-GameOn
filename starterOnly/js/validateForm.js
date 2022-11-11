@@ -32,9 +32,11 @@ form.addEventListener("submit", (e) => {
         let resultFirstName;
         if (firstName.value === "") {
             firstNameError.textContent = "Veuillez renseigner ce champ.";
+            firstName.focus();
             resultFirstName = false;
         } else if (firstName.value.length < 2) {
             firstNameError.textContent = "Veuillez entrer 2 caractères ou plus pour le champ du prénom.";
+            firstName.focus();
             resultFirstName = false;
         } else {
             firstNameError.textContent = "";
@@ -54,9 +56,11 @@ form.addEventListener("submit", (e) => {
         let resultLastName;
         if (lastName.value === "") {
             lastNameError.textContent = "Veuillez renseigner ce champ.";
+            lastName.focus();
             resultLastName = false;
         } else if (lastName.value.length < 2) {
-            lastNameError.textContent = "Veuillez entrer 2 caractères ou plus pour le champ du prénom."
+            lastNameError.textContent = "Veuillez entrer 2 caractères ou plus pour le champ du prénom.";
+            lastName.focus();
             resultLastName = false;
         } else {
             lastNameError.textContent = "";
@@ -73,11 +77,13 @@ form.addEventListener("submit", (e) => {
     // EMAIL
     const getEmail = () => {
         let resultEmail;
-        if (!email.value) {
+        if (email.value === "") {
             emailError.textContent = "Veuillez renseigner ce champ.";
+            email.focus();
             resultEmail = false;
         } else if (!email.value.match(validRegex)) {
             emailError.textContent = "Veuillez rentrer une adresse mail valide.";
+            email.focus();
             resultEmail = false;
         } else {
             emailError.textContent = "";
@@ -130,7 +136,8 @@ form.addEventListener("submit", (e) => {
     const getQuantity = () => {
         let resultQuantity;
         if (quantity.value === "") {
-            quantityError.textContent = "Veuillez renseigner ce champ."
+            quantityError.textContent = "Veuillez renseigner ce champ.";
+            quantity.focus();
         } else {
             quantityError.textContent = "";
             resultQuantity = quantity.value;
