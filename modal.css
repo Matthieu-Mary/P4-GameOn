@@ -227,7 +227,6 @@ main {
   width: 100%;
   max-width: 500px;
   min-width: 370px;
-  
   animation-name: modalopen;
   animation-duration: var(--modal-duration);
   background: #232323;
@@ -265,30 +264,6 @@ input {
   font-size: 20px;
   height: 48px;
 }
-/* .formData[data-error]::after {
-  content: attr(data-error);
-  font-size: 0.4em;
-  color: #e54858;
-  display: block;
-  margin-top: 7px;
-  margin-bottom: 7px;
-  text-align: right;
-  line-height: 0.3;
-  opacity: 0;
-  transition: 0.3s;
-}
-.formData[data-error-visible="true"]::after {
-  opacity: 1;
-}
-.formData[data-error-visible="true"] .text-control {
-  border: 20px solid #e54858;
-}
-
-input[data-error]::after {
-    content: attr(data-error);
-    font-size: 0.4em;
-    color: red;
-} */
 
 .error {
   color: #FF4E60;
@@ -388,7 +363,7 @@ input[data-error]::after {
 .btn-signup {
   background: var(--red-1);
   display: block;
-  margin: 0 auto;
+  margin: 10px auto 0;
   border-radius: 7px;
   font-size: 1rem;
   padding: 12px 82px;
@@ -545,11 +520,11 @@ footer {
 
 .validated-form-container {
   padding: 0;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
-  max-height: 800px;
-  height: 80vh;
+  max-height: 750px;
+  height: 750px;
   width: 100%;
   background-color: var(--dark-1);
   position: relative;
@@ -640,9 +615,15 @@ footer {
     margin: 32px auto 10px;
     padding: 12px 35px;
   }
+  .btn-submit {
+    padding: 12px 50px;
+  }
   .copyrights {
     margin-top: 50px;
     text-align: center;
+  }
+  .content label {
+    font-size: 14px;
   }
 
   .validated-content h2 {
