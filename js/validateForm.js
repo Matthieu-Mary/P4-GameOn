@@ -5,14 +5,14 @@ form.addEventListener("submit", (e) => {
   e.preventDefault();
 
   // INPUT FIELDS
-  let firstName = document.getElementById("first");
-  let lastName = document.getElementById("last");
-  let email = document.getElementById("email");
-  let birthDate = document.getElementById("birthdate");
-  let quantity = document.getElementById("quantity");
-  let allLocations = document.querySelectorAll(".checkbox-input[type='radio']");
-  let conditions = document.querySelector(".conditions");
-  let beWarned = document.getElementById("checkbox2");
+  const firstName = document.getElementById("first");
+  const lastName = document.getElementById("last");
+  const email = document.getElementById("email");
+  const birthDate = document.getElementById("birthdate");
+  const quantity = document.getElementById("quantity");
+  const allLocations = document.querySelectorAll(".checkbox-input[type='radio']");
+  const conditions = document.querySelector(".conditions");
+  const beWarned = document.getElementById("checkbox2");
 
   // ERROR MESSAGES
   const firstNameError = document.querySelector(".firstName-error");
