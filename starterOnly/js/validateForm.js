@@ -23,9 +23,8 @@ form.addEventListener("submit", (e) => {
   const locationError = document.querySelector(".location-error");
   const conditionsError = document.querySelector(".conditions-error");
 
-  // ADD INPUTS VALUE TO LOCALSTORAGE OR DISPLAY ERROR
+  // ----- ADD INPUTS VALUE TO LOCALSTORAGE OR DISPLAY ERROR -----
 
-  
   // FIRST NAME
   const getFirstName = () => {
       let resultFirstName;

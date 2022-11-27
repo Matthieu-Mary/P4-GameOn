@@ -18,7 +18,6 @@ function editNav() {
 
 // launch and close modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
-console.log(modalBtn);
 modalCloseBtn.addEventListener("click", removeModal);
 validatedFormCloseBtn.addEventListener("click", removeModal);
 
