@@ -148,27 +148,20 @@ form.addEventListener("submit", (e) => {
 
   // LOCATIONS
   const getLocation = () => {
-    // set into localstorage
-    allLocations.forEach((location) => {
-      let locationValue;
-      if (location.checked) {
-        locationValue = location.value;
-        localStorage.setItem("location", locationValue);
-      } else {
-        locationError.textContent = "Veuillez choisir une localisation.";
-      }
-    });
-
+    let resultLocation;
     // convert node list into array
     const allLocationsArr = Array.prototype.slice.call(allLocations);
-
-    // return true if a location is selected and false if not
-    const resultLocation = allLocationsArr.some((location) => location.checked);
-    if (resultLocation) {
+    // find if location is checked or not
+    const locationChecked = allLocationsArr.find((location) => location.checked);
+    if (locationChecked !== undefined) {
+      localStorage.setItem("location", locationChecked.value);
       locationError.textContent = "";
+      resultLocation = true;
+    } else {
+      locationError.textContent = "Veuillez choisir une localisation.";
+      resultLocation = false;
     }
-
-    return resultLocation;
+     return resultLocation;
   };
   const locationResult = getLocation();
 
