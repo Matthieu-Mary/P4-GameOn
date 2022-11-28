@@ -28,7 +28,7 @@ form.addEventListener("submit", (e) => {
   // FIRST NAME
   const getFirstName = () => {
       let resultFirstName;
-      if (firstName.value === "") {
+      if (firstName.value.trim() === "") {
           firstNameError.textContent = "Veuillez renseigner ce champ.";
           firstName.focus();
           resultFirstName = false;
@@ -51,7 +51,7 @@ form.addEventListener("submit", (e) => {
     // LAST NAME
     const getLastName = () => {
         let resultLastName;
-        if (lastName.value === "") {
+        if (lastName.value.trim() === "") {
             lastNameError.textContent = "Veuillez renseigner ce champ.";
             lastName.focus();
             resultLastName = false;
@@ -77,7 +77,7 @@ form.addEventListener("submit", (e) => {
     // EMAIL
     const getEmail = () => {
         let resultEmail;
-    if (email.value === "") {
+    if (email.value.trim() === "") {
       emailError.textContent = "Veuillez renseigner ce champ.";
       email.focus();
       resultEmail = false;

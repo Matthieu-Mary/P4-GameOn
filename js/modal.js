@@ -28,7 +28,7 @@ function launchModal() {
 
 // remove modal
 function removeModal() {
-  modalbg.style.display = "none";
+  window.location.reload(true)
 }
 
 
